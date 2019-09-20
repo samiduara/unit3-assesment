@@ -13,5 +13,8 @@ class listsCreate(CreateView):
     
 
 class listsDelete(DeleteView):
-    model = lists
+    model =lists
    
+def delete(request, lists_id):
+    Lists.objects.filter(id=lists_id).delete()
+    return redirect('index')   

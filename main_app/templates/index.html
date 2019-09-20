@@ -9,30 +9,17 @@
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Wish List</h1>
-    {% if items|length == 0 %}
-        <h3>No Wish Items Exist</h3>
-    {% else %}
+  <header class="navbar-fixed">
+ <h1>Wish List Items</h1>
       <table class="pure-table pure-table-striped">
           <thead>
               <tr>
                   <th>Description</th>
+                  <th>Delete</th>
               </tr>
           </thead>
-          <tr>
-              <tD>List Description</tD>          
-          </tr>
-      </thead>
-      {% for item in items %}
-      <tr>
-          <th>{{item.description}}</th>
-          <th><a href="{% url 'items_delete' item.id %}">X</a></th>
-      </tr>
-  {% endfor %}
-
-</table>
-{% endif %}
-<hr
+  </header>
+  <main class="container">
       <form action="" method="post">
           <!-- Django requires the following for security purposes -->
           {% csrf_token %}
