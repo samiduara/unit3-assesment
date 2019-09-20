@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wish List Items</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Wish List</h1>
+    {% if items|length == 0 %}
+        <h3>No Wish Items Exist</h3>
+    {% else %}
+      <table class="pure-table pure-table-striped">
+          <thead>
+              <tr>
+                  <th>Description</th>
+              </tr>
+          </thead>
+          <tr>
+              <tD>List Description</tD>          
+          </tr>
+      </thead>
+      {% for item in items %}
+      <tr>
+          <th>{{item.description}}</th>
+          <th><a href="{% url 'items_delete' item.id %}">X</a></th>
+      </tr>
+  {% endfor %}
+
+</table>
+{% endif %}
+<hr
+      <form action="" method="post">
+          <!-- Django requires the following for security purposes -->
+          {% csrf_token %}
+          <table>
+            <!-- Render the inputs inside of <tr>s & <td>s -->
+            {{ form.as_table }}
+          </table>
+          <input type="submit" value="Add A Wish Item" class="btn">
+        </form>
+    {% block content %}
+    {% endblock %}
